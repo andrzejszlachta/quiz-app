@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
 html {
   box-sizing: border-box;
@@ -10,7 +10,7 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  background-color: #FFD9B7;
+  background-color: #EAC696;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -21,14 +21,16 @@ button {
   font-size: 1.5rem;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #C8E4B2;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 2px;
+  background-color: #65451F;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 
 }
 
 button:hover {
-  filter: brightness(80%);
+  filter: brightness(120%);
 }
 
 button:focus {
@@ -45,6 +47,69 @@ h1 {
   font-size: 3rem;
 }
 
-.start-container {
+.start-container,
+.quiz-container {
+  text-align: center;
+}
+
+.item {
+  background-color: #C8AE7D;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px auto;
+  max-width: 90%;
+}
+
+.item-question {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  color: rgb(44, 44, 44);
+  margin-inline: 1rem;
+}
+.item-answers {
+  margin: 3rem 0 1rem;
+}
+
+.item-answers .item-answer label {
+  display: inline-block;
+  text-align: left;
+  width: 70%;
+  margin-left: 1rem;
+  margin-block: 0.5rem;
+}
+
+.quiz-container button {
+  margin-block: 2rem;
+}
+
+.quiz-container .results {
+  font-size: 1.5rem;
+  margin-block: 2rem 0;
+}
+.quiz-container .results span {
+  font-weight: bold;
+}
+
+.item-answer input[type="checkbox"]:checked + label {
+  font-weight: bold;
+}
+
+.start-container .options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: left;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.start-container .options select,
+.start-container .options label {
+  font-size: 2rem;
+}
+.start-container .options select {
+  border-radius: 10px;
+  padding: 3px 5px;
+  cursor: pointer;
   text-align: center;
 }
