@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import QuizElement from "./QuizElement";
 // import data from "./data"
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [timer, setTimer] = useState({startTime: 0, timeNow: 0})
   const [questions, setQuestions] = useState([])
   const [settings, setSettings] = useState({difficulty: "easy", count: "5"})
   const [userAnswers, setUserAnswers] = useState({})
@@ -35,7 +36,26 @@ function App() {
   async function startQuiz() {
     await getQuestions();
     setIsPlaying(true)
+    setTimer({
+      startTime: Date.now(),
+      timeNow: Date.now(),
+    })
   }
+  
+  useEffect(() => {
+    if (!isPlaying) return
+    const interval = setInterval(() => {
+      setTimer(prevTimer => ({
+            ...prevTimer,
+            timeNow: Date.now(),
+          }))
+    }, 100);
+    if (checkingResults) {
+      console.log("clear");
+      clearInterval(interval)
+    }
+    return ()=> clearInterval(interval)
+  }) 
 
   function restartQuiz() {
     setIsPlaying(false)
@@ -69,7 +89,8 @@ function App() {
         <form>
           {quizElements}
           {checkingResults && <div className="results">
-            <span>{correctAnswersCount}/{settings.count} </span>correct answers
+            Correct answers:<span> {correctAnswersCount}/{settings.count}</span>
+            <div>Your time: <span>{ ((timer.timeNow - timer.startTime)/1000).toFixed(1)}s</span></div>
           </div>}
           <button onClick={checkResults}>{checkingResults ? "Restart" : "Check results"}</button>
         </form>
@@ -92,6 +113,8 @@ function App() {
         </div>
         <button onClick={startQuiz}>Start Quiz</button>
       </div> }
+      {isPlaying && !checkingResults && <div className="timer">Your time: <span>{ ((timer.timeNow - timer.startTime)/1000).toFixed(1)}</span>
+      </div>}
     </>
   )
 }
