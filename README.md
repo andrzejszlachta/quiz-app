@@ -1,5 +1,5 @@
 # Calculator
-LIVE: TBA
+LIVE: https://react-notes-scrimba-75ad8.web.app
 
 ## Table of Contents
 
@@ -7,7 +7,6 @@ LIVE: TBA
 - [Built With](#built-with)
 - [Features](#features)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -28,6 +27,3 @@ React
 
 andrzej.szlachta@mail.com  
 https://andrzejszlachta.github.io/  
-
-## Acknowledgements
-
